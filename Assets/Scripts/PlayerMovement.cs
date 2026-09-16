@@ -10,9 +10,14 @@ public class PLayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    void Update()
+    {
+        Run();
+    }
+
     void Run()
     {
-        rb.AddForce(new Vector2(movementInput.x * 3f, movementInput.y * 3f), ForceMode.Force);
+        rb.AddForce(new Vector3(movementInput.x * 3f, 0, movementInput.y * 3f), ForceMode.Force);
     }
     void OnMove(InputValue value)
     {
