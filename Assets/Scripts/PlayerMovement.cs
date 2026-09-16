@@ -17,10 +17,18 @@ public class PLayerMovement : MonoBehaviour
 
     void Run()
     {
-        rb.AddForce(new Vector3(movementInput.x * 3f, 0, movementInput.y * 3f), ForceMode.Force);
+        rb.AddForce(new Vector3(movementInput.x * 2f, 0, movementInput.y * 2f), ForceMode.Force);
     }
     void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
+    }
+
+    void OnJump(InputValue value)
+    {
+        if(value.isPressed)
+        {
+            rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        }
     }
 }
