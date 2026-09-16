@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PLayerMovement : MonoBehaviour
 {
     Rigidbody rb;
     Vector2 movementInput;
+    Animator animator;
 
     void Start(){
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -18,6 +21,14 @@ public class PLayerMovement : MonoBehaviour
     void Run()
     {
         rb.AddForce(new Vector3(movementInput.x * 2f, 0, movementInput.y * 2f), ForceMode.Force);
+        if(movementInput != Vector2.zero)
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
     }
     void OnMove(InputValue value)
     {
