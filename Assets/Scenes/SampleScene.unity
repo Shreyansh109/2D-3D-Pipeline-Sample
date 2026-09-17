@@ -632,7 +632,7 @@ MonoBehaviour:
     Camera: {fileID: 276369572}
     ActivateAfter: 0
     MinDuration: 0
-  - FullHash: -178524345
+  - FullHash: 2097796481
     Camera: {fileID: 1950086197}
     ActivateAfter: 0
     MinDuration: 0
