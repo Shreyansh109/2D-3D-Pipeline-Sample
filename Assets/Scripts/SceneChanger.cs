@@ -4,6 +4,8 @@ public class SceneChanger : MonoBehaviour
 {
     Animator animator;
     [SerializeField] private SceneDimensionHandler sceneData;
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -13,8 +15,8 @@ public class SceneChanger : MonoBehaviour
     {
         if (value.isPressed)
         {
-            sceneData.SetSceneDimensions(!sceneData._sceneDimensions);
+            sceneData.SetSceneDimensions(!sceneData.GetSceneDimensions());
         }
-        animator.SetBool("is3D", sceneData._sceneDimensions);
+        animator.SetBool("is3D", sceneData.GetSceneDimensions());
     }
 }
