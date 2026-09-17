@@ -23,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        animator.SetBool("isRunning", movementInput != Vector2.zero);
+        animator.SetBool("isRunningForward", movementInput.y > 0f);
+        animator.SetBool("isRunningBackward", movementInput.y < 0f);
     }
 
     void FixedUpdate()
