@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movementInput;
     Animator animator;
 
+    [SerializeField] private SceneDimensionHandler sceneData;
+
     [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float acceleration = 20f;
@@ -19,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        print("Scene Dimensions: " + sceneData.GetSceneDimensions());
     }
 
     void Update()
@@ -34,8 +37,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        float xForce = sceneData.GetSceneDimensions()
+            ? movementInput.x
+            : 0f;
+
         Vector3 targetDirection = new Vector3(
-            movementInput.x,
+            xForce,
             0f,
             movementInput.y
         ).normalized;

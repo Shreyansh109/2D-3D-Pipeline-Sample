@@ -1026,6 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7442926a8118e3f42acda52c99343b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  sceneData: {fileID: 11400000, guid: 1443c0de459be8c4b81efdad41d380e1, type: 2}
   moveSpeed: 5
   acceleration: 20
   deceleration: 25
