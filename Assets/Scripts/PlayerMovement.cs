@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movementInput;
     Animator animator;
 
-    [SerializeField] private SceneDimensionHandler sceneData;
+    [SerializeField] public SceneDimensionHandler sceneData;
+    [SerializeField] GameObject[] buildings;
 
     [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;
@@ -21,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        print("Scene Dimensions: " + sceneData.GetSceneDimensions());
+        buildings = GameObject.FindGameObjectsWithTag("Building");
     }
 
     void Update()
@@ -81,6 +82,14 @@ public class PlayerMovement : MonoBehaviour
         if (value.isPressed)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    void OnDimensionChanger(InputValue value)
+    {
+        for (int i = 0; i < buildings.Length; i++)
+        {
+            buildings[i].GetComponent<BuildingRenderer>().DimensionChanger();
         }
     }
 }

@@ -608,7 +608,7 @@ MonoBehaviour:
       LookAtTarget: {fileID: 0}
       CustomLookAtTarget: 0
   DefaultBlend:
-    Style: 0
+    Style: 1
     Time: 0.5
     CustomCurve:
       serializedVersion: 2
@@ -890,10 +890,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanCharacterDummy_F
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: f1e8e1bfafe7fa241ba6b4181f3eba85, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -1031,7 +1027,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   sceneData: {fileID: 11400000, guid: 1443c0de459be8c4b81efdad41d380e1, type: 2}
-  buildings: []
   moveSpeed: 5
   acceleration: 20
   deceleration: 25

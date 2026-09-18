@@ -9,6 +9,7 @@ public class SceneChanger : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        animator.SetBool("is3D", sceneData.GetSceneDimensions());
     }
 
     void OnDimensionChanger(InputValue value)
