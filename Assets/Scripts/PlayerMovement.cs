@@ -19,22 +19,39 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump")]
     [SerializeField] float jumpForce = 5f;
 
+    [Header("Rotation")]
+    [SerializeField] float rotationSpeed = 3f;
+    Vector2 lookInput;
+    float yaw;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         buildings = GameObject.FindGameObjectsWithTag("Building");
+        yaw = transform.eulerAngles.y;
     }
 
     void Update()
     {
         animator.SetBool("isRunningForward", movementInput.y > 0f);
         animator.SetBool("isRunningBackward", movementInput.y < 0f);
+
+        if (sceneData.GetSceneDimensions())
+        {
+            Rotate();
+        }
     }
 
     void FixedUpdate()
     {
         Move();
+    }
+
+    void Rotate()
+    {
+        yaw += lookInput.x * rotationSpeed * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(0f, yaw, 0f);
     }
 
     void Move()
@@ -78,6 +95,11 @@ public class PlayerMovement : MonoBehaviour
         movementInput = value.Get<Vector2>();
     }
 
+    void OnLook(InputValue value)
+    {
+        lookInput = value.Get<Vector2>();
+    }
+
     void OnJump(InputValue value)
     {
         if (value.isPressed)
@@ -99,6 +121,12 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i < buildings.Length; i++)
         {
             buildings[i].GetComponent<BuildingRenderer>().DimensionChanger();
+        }
+
+        if (!sceneData.GetSceneDimensions())
+        {
+            yaw = 0f;
+            transform.rotation = Quaternion.identity;
         }
     }
 }
