@@ -14,10 +14,7 @@ public class SceneChanger : MonoBehaviour
 
     void OnDimensionChanger(InputValue value)
     {
-        if (value.isPressed)
-        {
-            sceneData.SetSceneDimensions(!sceneData.GetSceneDimensions());
-        }
+        sceneData.SetSceneDimensions(!sceneData.GetSceneDimensions());
         animator.SetBool("is3D", sceneData.GetSceneDimensions());
     }
 }

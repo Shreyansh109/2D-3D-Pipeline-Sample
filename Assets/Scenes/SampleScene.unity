@@ -656,6 +656,10 @@ MonoBehaviour:
     Camera: {fileID: 276369572}
     ActivateAfter: 0
     MinDuration: 0
+  - FullHash: -1899209660
+    Camera: {fileID: 276369572}
+    ActivateAfter: 0
+    MinDuration: 0
   - FullHash: 2097796481
     Camera: {fileID: 1950086197}
     ActivateAfter: 0
@@ -665,6 +669,10 @@ MonoBehaviour:
     ActivateAfter: 0
     MinDuration: 0
   - FullHash: -302803706
+    Camera: {fileID: 1950086197}
+    ActivateAfter: 0
+    MinDuration: 0
+  - FullHash: 72097763
     Camera: {fileID: 1950086197}
     ActivateAfter: 0
     MinDuration: 0
@@ -680,6 +688,10 @@ MonoBehaviour:
   - Hash: -302803706
     HashOfParent: 756556552
   - Hash: 2097796481
+    HashOfParent: 756556552
+  - Hash: -1899209660
+    HashOfParent: 756556552
+  - Hash: 72097763
     HashOfParent: 756556552
   m_LegacyLookAt: {fileID: 0}
   m_LegacyFollow: {fileID: 0}
@@ -1455,7 +1467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   sceneData: {fileID: 11400000, guid: 1443c0de459be8c4b81efdad41d380e1, type: 2}
   buildings: []
-  moveSpeed: 5
+  moveSpeed: 12
   acceleration: 20
   deceleration: 25
   jumpForce: 5

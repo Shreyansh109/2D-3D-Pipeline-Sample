@@ -60,11 +60,14 @@ public class PlayerMovement : MonoBehaviour
             ? movementInput.x
             : 0f;
 
-        Vector3 targetDirection = new Vector3(
-            xForce,
-            0f,
-            movementInput.y
-        ).normalized;
+        Vector3 forward = transform.forward;
+        Vector3 right = transform.right;
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 targetDirection = (right * xForce + forward * movementInput.y).normalized;
 
         Vector3 targetVelocity = targetDirection * moveSpeed;
 
@@ -105,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
         if (value.isPressed)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("Jump");
         }
     }
 
