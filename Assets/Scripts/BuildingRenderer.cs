@@ -13,14 +13,15 @@ public class BuildingRenderer : MonoBehaviour
 
     public void DimensionChanger()
     {
-        print("Dimension Change Pressed");
-        if (!playerMovement.sceneData.GetSceneDimensions())
+        if (playerMovement.sceneData.GetSceneDimensions() && 
+            (player.gameObject.transform.position.x - gameObject.transform.position.x) < 0)
         {
-            gameObject.SetActive(true);
+            gameObject.SetActive(false);
+            print("Dimension Change Pressed");
         }
         else
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(true);
         }
     }
     

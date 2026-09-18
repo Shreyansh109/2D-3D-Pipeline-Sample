@@ -87,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDimensionChanger(InputValue value)
     {
+        print(buildings.Length);
         for (int i = 0; i < buildings.Length; i++)
         {
             buildings[i].GetComponent<BuildingRenderer>().DimensionChanger();
