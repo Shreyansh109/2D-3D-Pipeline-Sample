@@ -9,11 +9,12 @@ public class BuildingRenderer : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
+        DimensionChanger();
     }
 
     public void DimensionChanger()
     {
-        if (playerMovement.sceneData.GetSceneDimensions() && 
+        if (!playerMovement.sceneData.GetSceneDimensions() && 
             (player.gameObject.transform.position.x - gameObject.transform.position.x) < 0)
         {
             gameObject.SetActive(false);

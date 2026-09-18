@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -87,7 +88,14 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDimensionChanger(InputValue value)
     {
+        StartCoroutine(DimensionChangeDelayed());
+    }
+    IEnumerator DimensionChangeDelayed()
+    {
+        yield return new WaitForSeconds(0.01f);
+
         print(buildings.Length);
+
         for (int i = 0; i < buildings.Length; i++)
         {
             buildings[i].GetComponent<BuildingRenderer>().DimensionChanger();
