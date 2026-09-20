@@ -9,7 +9,6 @@ public class BuildingRenderer : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
-        DimensionChanger();
     }
 
     public void DimensionChanger()
@@ -18,7 +17,7 @@ public class BuildingRenderer : MonoBehaviour
             (player.gameObject.transform.position.x - gameObject.transform.position.x) < 0)
         {
             gameObject.SetActive(false);
-            print("Dimension Change Pressed");
+            print(gameObject.name + " is inactive");
         }
         else
         {

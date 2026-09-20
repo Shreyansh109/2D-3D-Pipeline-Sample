@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         buildings = GameObject.FindGameObjectsWithTag("Building");
+        print("Buildings length: " + buildings.Length);
+        StartCoroutine(DimensionChangeDelayed());
         yaw = transform.eulerAngles.y;
     }
 
@@ -119,8 +121,6 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator DimensionChangeDelayed()
     {
         yield return new WaitForSeconds(0.01f);
-
-        print(buildings.Length);
 
         for (int i = 0; i < buildings.Length; i++)
         {
