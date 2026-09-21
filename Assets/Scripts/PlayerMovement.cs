@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value.isPressed)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            StartCoroutine(DelayedJump());
             animator.SetTrigger("Jump");
         }
     }
@@ -132,5 +132,11 @@ public class PlayerMovement : MonoBehaviour
             yaw = 0f;
             transform.rotation = Quaternion.identity;
         }
+    }
+    IEnumerator DelayedJump()
+    {
+        yield return new WaitForSeconds(0.02f);
+
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }
