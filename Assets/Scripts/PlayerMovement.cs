@@ -36,9 +36,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Drive the forward and backward animation states from the current input.
         animator.SetBool("isRunningForward", movementInput.y > 0f);
         animator.SetBool("isRunningBackward", movementInput.y < 0f);
 
+        // Rotation is only available while the scene is in its 3D dimension.
         if (sceneData.GetSceneDimensions())
         {
             Rotate();
@@ -58,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        // Sideways movement is disabled in the 2D dimension.
         float xForce = sceneData.GetSceneDimensions()
             ? movementInput.x
             : 0f;
@@ -88,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
             currentAcceleration * Time.fixedDeltaTime
         );
 
+        // Change only horizontal velocity so gravity and jumping remain unaffected.
         rb.linearVelocity = new Vector3(
             newVelocity.x,
             rb.linearVelocity.y,
@@ -120,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator DimensionChangeDelayed()
     {
+        // Wait for the dimension change event to finish before updating buildings.
         yield return new WaitForSeconds(0.01f);
 
         for (int i = 0; i < buildings.Length; i++)
@@ -129,12 +134,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (!sceneData.GetSceneDimensions())
         {
+            // Reset the player orientation when switching back to 2D.
             yaw = 0f;
             transform.rotation = Quaternion.identity;
         }
     }
     IEnumerator DelayedJump()
     {
+        // Apply the impulse after the input event has been processed.
         yield return new WaitForSeconds(0.02f);
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
